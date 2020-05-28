@@ -6,58 +6,26 @@
     >
       <el-tabs v-model="activeName">
         <el-tab-pane
-          label="角色"
+          label="Loading效果"
           name="roles"
         >
-          {{ mun }}
-          <br>
-
-          <div v-waves class="box">
-            12312
-          </div>
-
-          <el-button
-            v-throttle="handleClick"
-            type="primary"
-          >
-            节流
-          </el-button>
-          <el-button type="primary">
-            新增
-          </el-button>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
+          <Loading />
         </el-tab-pane>
         <el-tab-pane
-          label="节点"
+          label="测试"
           name="nodes"
         >
-          <el-container>
-            <el-main style="padding:0">
-              <el-table :data="tableData">
-                <el-table-column
-                  prop="date"
-                  label="日期"
-                  width="140"
-                />
-                <el-table-column
-                  prop="name"
-                  label="姓名"
-                  width="120"
-                />
-                <el-table-column
-                  prop="address"
-                  label="地址"
-                />
-              </el-table>
-            </el-main>
-          </el-container>
+          <el-button
+            type="primary"
+            @click="onToast"
+          >按钮Toast</el-button>
+          <el-button
+            type="primary"
+            @click="onIndicator"
+          >按钮Indicator</el-button>
         </el-tab-pane>
         <el-tab-pane
-          label="流程"
+          label="测试"
           name="process"
         >
           流程
@@ -72,7 +40,11 @@
   </div>
 </template>
 <script>
+import Loading from './modules/Loading'
 export default {
+  components: {
+    Loading
+  },
   data() {
     const item = {
       date: '2016-05-02',
@@ -89,13 +61,14 @@ export default {
   watch: {},
   mounted() { },
   methods: {
-    onHandle() {
-
+    onToast() {
+      this.$Toast({ message: 'Toast...' })
     },
-    handleClick() {
+    onIndicator() {
+      this.$Indicator()
       setTimeout(() => {
-        this.num += 100
-      }, 1000)
+        this.$Indicator.hidden()
+      }, 5000)
     }
   }
 }

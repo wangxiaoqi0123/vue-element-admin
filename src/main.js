@@ -23,12 +23,20 @@ import * as filters from './filters' // global filters
 import moment from 'moment' // 需要汉化
 import _ from 'lodash'
 
+// toast Loading 组件
+import Indicator from '@/components/Indicator/index.js'
+import Toast from '@/components/Toast/index.js'
+
 // 时间赋值使用
 Vue.prototype.$moment = moment
 moment.locale('zh-cn') // 导入文件
 
 // 工具库
 Vue.prototype.$lodash = _
+
+// 扩展弹框
+Vue.use(Indicator)
+Vue.use(Toast)
 
 /**
  * If you don't want to use mock-server
