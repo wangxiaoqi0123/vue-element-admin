@@ -9,8 +9,18 @@
           label="角色"
           name="roles"
         >
-          <el-button type="primary">
-            编辑
+          {{ mun }}
+          <br>
+
+          <div v-waves class="box">
+            12312
+          </div>
+
+          <el-button
+            v-throttle="handleClick"
+            type="primary"
+          >
+            节流
           </el-button>
           <el-button type="primary">
             新增
@@ -71,7 +81,8 @@ export default {
     }
     return {
       tableData: Array(20).fill(item),
-      activeName: 'roles'
+      activeName: 'roles',
+      num: '0'
     }
   },
   computed: {},
@@ -80,6 +91,11 @@ export default {
   methods: {
     onHandle() {
 
+    },
+    handleClick() {
+      setTimeout(() => {
+        this.num += 100
+      }, 1000)
     }
   }
 }

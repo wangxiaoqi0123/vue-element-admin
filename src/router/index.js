@@ -410,11 +410,33 @@ export const asyncRoutes = [
     },
     children: [
       {
-        path: 'index',
-        component: () => import('@/views/test/index'),
+        path: 'test',
+        component: () => import('@/views/test/test/index'),
         name: 'test',
         meta: {
-          title: '测试',
+          title: 'Test',
+          icon: 'icon',
+          noCache: true,
+          roles: ['admin', 'editor']
+        }
+      },
+      {
+        path: 'moment',
+        component: () => import('@/views/test/moment/index'),
+        name: 'moment',
+        meta: {
+          title: 'Moment',
+          icon: 'icon',
+          noCache: true,
+          roles: ['admin', 'editor']
+        }
+      },
+      {
+        path: 'lodash',
+        component: () => import('@/views/test/lodash/index'),
+        name: 'lodash',
+        meta: {
+          title: 'Lodash',
           icon: 'icon',
           noCache: true,
           roles: ['admin', 'editor']

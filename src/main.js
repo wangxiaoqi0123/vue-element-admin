@@ -20,6 +20,16 @@ import './utils/error-log' // error log
 
 import * as filters from './filters' // global filters
 
+import moment from 'moment' // 需要汉化
+import _ from 'lodash'
+
+// 时间赋值使用
+Vue.prototype.$moment = moment
+moment.locale('zh-cn') // 导入文件
+
+// 工具库
+Vue.prototype.$lodash = _
+
 /**
  * If you don't want to use mock-server
  * you want to use MockJs for mock api
