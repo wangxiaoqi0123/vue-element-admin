@@ -22,6 +22,7 @@ import * as filters from './filters' // global filters
 
 import moment from 'moment' // 需要汉化
 import _ from 'lodash'
+import dt from '@/directive/dt/index'
 
 // toast Loading 组件
 import Indicator from '@/components/Indicator/index.js'
@@ -37,6 +38,9 @@ Vue.prototype.$lodash = _
 // 扩展弹框
 Vue.use(Indicator)
 Vue.use(Toast)
+
+// 防抖节流
+Vue.use(dt)
 
 /**
  * If you don't want to use mock-server

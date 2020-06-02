@@ -16,9 +16,15 @@
           name="nodes"
         >
           <el-button
+            v-debounce="{fun: 'handleDblclick', event: 'click', wait: 500}"
+            :loading="loading"
             type="primary"
-            @click="onToast"
-          >按钮Toast</el-button>
+          >按钮v-debounce</el-button>
+          <el-button
+            v-throttle="{fun: 'handleDblclick', event: 'click',wait: 1000}"
+            :loading="loading"
+            type="primary"
+          >按钮v-throttle</el-button>
           <el-button
             type="primary"
             @click="onIndicator"
@@ -54,7 +60,8 @@ export default {
     return {
       tableData: Array(20).fill(item),
       activeName: 'roles',
-      num: '0'
+      num: '0',
+      loading: false
     }
   },
   computed: {},
@@ -63,6 +70,14 @@ export default {
   methods: {
     onToast() {
       this.$Toast({ message: 'Toast...' })
+    },
+    handleDblclick() {
+      // this.loading = true
+      console.log('111 :>> ', 111)
+      setTimeout(() => {
+        this.loading = false
+      }, 1000)
+      console.log('222 :>> ', 222)
     },
     onIndicator() {
       this.$Indicator()

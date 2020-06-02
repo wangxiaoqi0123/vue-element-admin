@@ -25,7 +25,7 @@ IndicatorConstructor.prototype.close = function() {
 let instance = null
 export default {
   install(Vue, option) {
-    (Vue.prototype.$Indicator = function(options = {}) {
+    Vue.prototype.$Indicator = function(options = {}) {
       instance = new IndicatorConstructor().$mount()
 
       instance.message = options.message || defaultProps.message
@@ -33,9 +33,9 @@ export default {
       instance.visible = true
 
       return instance
-    }),
-    (Vue.prototype.$Indicator.hidden = function() {
+    }
+    Vue.prototype.$Indicator.hidden = function() {
       instance.close()
-    })
+    }
   }
 }
