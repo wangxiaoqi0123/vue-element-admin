@@ -19,12 +19,12 @@
             v-debounce="{fun: 'handleDblclick', event: 'click', wait: 500}"
             :loading="loading"
             type="primary"
-          >按钮v-debounce</el-button>
+          >防抖v-debounce</el-button>
           <el-button
             v-throttle="{fun: 'handleDblclick', event: 'click',wait: 1000}"
             :loading="loading"
             type="primary"
-          >按钮v-throttle</el-button>
+          >节流v-throttle</el-button>
           <el-button
             type="primary"
             @click="onIndicator"
