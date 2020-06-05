@@ -31,25 +31,28 @@
           >按钮Indicator</el-button>
         </el-tab-pane>
         <el-tab-pane
-          label="测试"
+          label="小组件"
           name="process"
         >
-          流程
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
+          <el-button
+            v-debounce="{fun: 'handleClick', event: 'click', wait: 500}"
+            :loading="loading"
+            type="primary"
+          >按钮v-debounce Popup</el-button>
         </el-tab-pane>
       </el-tabs>
     </el-card>
+
+    <Popup v-model="show" />
   </div>
 </template>
 <script>
 import Loading from './modules/Loading'
+import Popup from './components/Popup'
 export default {
   components: {
-    Loading
+    Loading,
+    Popup
   },
   data() {
     const item = {
@@ -61,7 +64,8 @@ export default {
       tableData: Array(20).fill(item),
       activeName: 'roles',
       num: '0',
-      loading: false
+      loading: false,
+      show: false
     }
   },
   computed: {},
@@ -84,6 +88,9 @@ export default {
       setTimeout(() => {
         this.$Indicator.hidden()
       }, 5000)
+    },
+    handleClick() {
+      this.show = true
     }
   }
 }
